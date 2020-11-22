@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/Bmob-2.2.5.min.js"></script>
+    <style>
+        .form {
+            width: 200px;
+            margin: 100px auto;
+            padding: 10px 20px 30px;
+            border: 3px solid #ccc;
+            text-align: center;
+            border-radius: 20%;
+        }
+        
+        input,
+        button {
+            margin: 10px 0;
+        }
+    </style>
+    <script>
+        Bmob.initialize("a19268522dbd799c", "262616");
+        Bmob.debug(true);
+
+        function login() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            Bmob.User.login(username, password).then(res => {
+                console.log(res)
+                location.href = 'show.html';
+            }).catch(err => {
+                console.log(err)
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="form">
+        <p>登入</p>
+        <input type="text" id="username" placeholder="账号" name="username">
+        <input type="password" id="password" placeholder="密码" name="password">
+        <button onclick="login()">确定</button>
+    </div>
+
+
+</body>
+
+</html>
